@@ -3,10 +3,100 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+        />
         <link rel="stylesheet" href="./assets/css/style.css" />
-        <title>Document</title>
+        <link rel="shortcut icon" href="assets/img/favicon.ico" />
+
+        <title>Elige tu SuperHéroe</title>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+            <div class="container">
+                <a class="navbar-brand" href="#"
+                    ><img src="./assets/img/sh2.jpg" alt="logo superheroe" width="50"
+                /></a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link" aria-current="page" href="#">Búsqueda</a>
+                        <a class="nav-link" href="#">Listado</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main class="container text-center">
+            <div class="mt-5">
+                <img src="./assets/img/sh1.jpg" alt="imagen superheroes" class="img-fluid imagen" />
+            </div>
+
+            <section class="container pt-5" id="contacto">
+                <h2 class="text-center py-5">Encuentra tu superhéroe</h2>
+                <form class="row" id="formulario">
+                    <div class="col-12">
+                        <div class="mb-3 text-start">
+                            <label for="idSuperheroe" class="form-label"
+                                >A través de su ID puedes buscar a tu héroe favorito.
+                            </label>
+                            <div class="d-flex">
+                                <input
+                                    type="text"
+                                    class="form-control mb-2"
+                                    id="idSuperheroe"
+                                    name="idSuperheroe"
+                                    placeholder="Ingrese un número del 1 al 731"
+                                />
+                                <button class="ms-2 btn" id="btnVer" type="submit">Ver</button>
+                            </div>
+                            <p class="error"></p>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <section>
+                <h2 class="mt-5">Listado con algunos de los superhéroes</h2>
+                <table class="table table-striped mx-auto mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">#ID</th>
+                            <th scope="col">Nombre personaje</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bodyTable"></tbody>
+                </table>
+            </section>
+        </main>
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+        ></script>
         <script src="./assets/js/app.js"></script>
     </body>
 </html>
