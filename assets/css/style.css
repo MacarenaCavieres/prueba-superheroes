@@ -14,12 +14,18 @@ body {
     width: 60%;
 }
 
-#contacto {
+@media (max-width: 768px) {
+    .imagen {
+        width: 100%;
+    }
+}
+
+#find {
     width: 100%;
 }
 
-@media screen and (min-width: 768px) {
-    #contacto {
+@media (min-width: 768px) {
+    #find {
         width: 50%;
     }
 }
@@ -30,8 +36,30 @@ body {
     color: white;
 }
 
-@media screen and (min-width: 768px) {
+.infoSuperheroes {
+    width: 100%;
+}
+
+#chartContainer {
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .infoSuperheroes {
+        width: 85%;
+    }
+    #chartContainer {
+        width: 85%;
+    }
+}
+
+@media (min-width: 768px) {
     .table {
         width: 50%;
     }
+}
+
+footer {
+    background-color: #265073;
+    color: white;
 }

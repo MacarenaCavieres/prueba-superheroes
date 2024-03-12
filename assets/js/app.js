@@ -3,24 +3,25 @@ $(function () {
     const btnVer = $("#btnVer");
     const error = $(".error");
     const infoSuperheroes = $(".infoSuperheroes");
+    const chartContainer = $("#chartContainer");
     const regex = /^[0-9]+$/;
 
     btnVer.on("click", function (event) {
         event.preventDefault();
         const idSuperheroe = $("#idSuperheroe").val();
 
-        if (!regex.test(idSuperheroe)) {
+        if (!regex.test(idSuperheroe.trim())) {
+            error.html("");
             error.append(`Favor ingrese un número`);
             return;
         }
-        if (!idSuperheroe.trim()) {
-            error.append(`Ingresar ID`);
-            return;
-        }
-        if (idSuperheroe <= 0 || idSuperheroe >= 731) {
+
+        if (idSuperheroe <= 0 || idSuperheroe > 731) {
+            error.html("");
             error.append(`Id no existente`);
             return;
         }
+
         infoSuperheroes.html("");
 
         const superheroe = +idSuperheroe;
@@ -29,8 +30,7 @@ $(function () {
             url: `https://www.superheroapi.com/api.php/4905856019427443/${superheroe}`,
             method: "GET",
             success(data) {
-                console.log(data);
-
+                // console.log(data);
                 let alianzas = data.biography.aliases.map((item) => {
                     return item;
                 });
@@ -40,7 +40,7 @@ $(function () {
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="${data.image.url}" class="img-fluid rounded-start mt-3" alt="${data.name}" />
+                            <img src="${data.image.url}" class="img-fluid rounded-start" alt="${data.name}" />
                         </div>
                         <div class="col-md-8">
                             <div class="card-body mt-5">
@@ -57,6 +57,34 @@ $(function () {
                     </div>
                 </div>
                 `);
+
+                const options = {
+                    title: {
+                        text: `Estadísticas de poder de ${data.name}`,
+                    },
+                    data: [
+                        {
+                            type: "pie",
+                            startAngle: 45,
+                            showInLegend: "true",
+                            legendText: "{label}",
+                            indexLabel: "{label} ({y})",
+                            yValueFormatString: "#,##0.#" % "",
+                            dataPoints: [
+                                { label: "combat", y: `${data.powerstats.combat}` },
+                                { label: "durability", y: `${data.powerstats.durability}` },
+                                { label: "intelligence", y: `${data.powerstats.intelligence}` },
+                                { label: "power", y: `${data.powerstats.power}` },
+                                { label: "speed", y: `${data.powerstats.speed}` },
+                                { label: "strength", y: `${data.powerstats.strength}` },
+                            ],
+                        },
+                    ],
+                };
+                chartContainer.css({
+                    height: "400px",
+                });
+                chartContainer.CanvasJSChart(options);
             },
             error(err) {
                 console.log(err);
